@@ -32,6 +32,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'haml-rails'
+gem 'simple_form'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'twitter-bootstrap-rails'
+gem "therubyracer"
+gem "less-rails"
+gem 'better_errors'
+gem 'binding_of_caller'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

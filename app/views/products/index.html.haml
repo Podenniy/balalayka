@@ -1,0 +1,20 @@
+%h1 Listing products
+%table.table-bordered.table-striped
+  - @products.each do |product|
+    
+    %tr
+      %td
+        = image_tag(product.image_url, class: 'list_image')
+      %td
+        %dl
+          %dt
+            = product.title
+          %dd 
+            = truncate(strip_tags(product.description),length:80)
+    
+      %td 
+        = link_to 'Show', product,:class => 'btn btn-mini btn-primary'
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(product), :class => 'btn btn-mini'
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), product_path(product), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_product_path, :class => 'btn btn-primary'
