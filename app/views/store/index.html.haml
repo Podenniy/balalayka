@@ -1,0 +1,14 @@
+%h1 Balalaikin Catalog
+-@products.each do |product|
+  .hero-unit.span11.product_title.well
+    %h3 
+      = product.title
+    = image_tag(product.image_url)
+    %p.discription
+      = sanitize(product.description)
+    .price_line
+      %span.price
+        %strong
+          Цена:
+        %span.waluta
+          = number_to_currency(product.price, unit: "UA", format: "%n %u")

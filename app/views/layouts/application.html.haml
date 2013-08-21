@@ -18,26 +18,25 @@
 
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") Balalayka
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+    %header#header.container
+      
+      .navbar.navbar-inverse
+        %nav.navbar-inner
+          .container
+            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.brand(href="#") Balalayka
+            .container.nav-collapse
+              %ul.nav
+                %li= link_to "Link 1", "/path1"
+                %li= link_to "Link 2", "/path2"
+                %li= link_to "Link 3", "/path3"
 
-    .container
+    .container-fluid.wrap
 
-      .row
-        .span9
-          = bootstrap_flash
-          = yield
+      .row-fluid
         .span3
           .well.sidebar-nav
             %h3 Sidebar
@@ -46,7 +45,10 @@
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
-    
+        .span9
+          = bootstrap_flash
+          = yield
+        
       %footer
         %p &copy; Company 2013
     /
