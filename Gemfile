@@ -40,6 +40,7 @@ gem "therubyracer"
 gem "less-rails"
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'jquery-ui-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

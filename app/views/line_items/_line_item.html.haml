@@ -1,0 +1,12 @@
+- if line_item == @current_item
+  %tr#current_item
+- else
+  %tr
+%td.item_title
+  #{line_item.quantity}&times;
+%td
+  = line_item.product.title
+%td.item_price 
+  = number_to_currency(line_item.total_price, unit: "UA", format: "%n %u"    )
+%td.table_but
+  = button_to 'Удалить',decrement_line_item_path(line_item), method: :delete,:method => :put, remote: true, class: 'btn btn-mini btn-warning '

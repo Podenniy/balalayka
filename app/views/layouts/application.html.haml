@@ -37,16 +37,23 @@
     .container-fluid.wrap
 
       .row-fluid
-        .span3
+        .span4.left_colum.fix
           .well.sidebar-nav
+            #cart
+              = hidden_div_if(@cart.line_items.empty?, id:'cart') do
+                = render @cart
             %h3 Sidebar
             %ul.nav.nav-list
               %li.nav-header Sidebar
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
-        .span9
-          = bootstrap_flash
+              %li
+                %strong 
+                = @time
+        .span8.offset4
+          #notice_id
+            = bootstrap_flash
           = yield
         
       %footer

@@ -1,6 +1,9 @@
+- if @count > 5 
+  %strong
+    You've viewed this page #{pluralize(@count,"time")}, it is time to buy
 %h1 Balalaikin Catalog
 -@products.each do |product|
-  .hero-unit.span11.product_title.well
+  .hero-unit.span11.product_title.well.entry
     %h3 
       = product.title
     = image_tag(product.image_url)
@@ -12,3 +15,4 @@
           Цена:
         %span.waluta
           = number_to_currency(product.price, unit: "UA", format: "%n %u")
+      = button_to 'Добавить в корзину', line_items_path(product_id: product), remote: true ,  :class => "btn btn-primary "    
