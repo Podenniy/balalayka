@@ -1,14 +1,17 @@
  
 .cart_title
-  Ваша карта
+  Ваша корзина
 %table.table-bordered
   = render(cart.line_items)
   %tr.total_line
     %td{:colspan => "1"} Total
     %td.total_cell
       = number_to_currency(cart.total_price, unit: "UA", format: "%n %u")
-= button_to 'Оформить заказ', new_order_path, method: :get
-= button_to 'Удалить корзину', cart, method: :delete, remote: true, data: {confirm: 'Точно удалить?'},class: "btn btn-smal btn-danger "
-
+.cart_form 
+  - unless current_page?(new_order_path)
+    = button_to 'Оформить заказ', new_order_path, method: :get, class: "btn btn-success"
+    = button_to 'Удалить корзину', cart, method: :delete, remote: true, data: {confirm: 'Точно удалить?'},class: "btn btn-smal btn-danger "
+  - else
+    = button_to 'Отменить заказ', store_path, method: :get , :class => 'btn btn-inverse reset'
 
 

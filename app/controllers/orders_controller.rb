@@ -1,6 +1,17 @@
 class OrdersController < InheritedResources::Base
   before_action :currcart 
   before_action :set_order, only: [ :show, :edit, :update, :destroy]
+
+  def index
+    @orders = Order.paginate page: params[:page], order: 'created_at desc',
+       per_page: 10
+
+    index! do | format |
+      format.html #index.html.haml
+      format.json { render json:@orders }
+    end
+  end
+
   def new
   	@cart = current_cart
   	if @cart.line_items.empty?
