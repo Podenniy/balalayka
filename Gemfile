@@ -42,6 +42,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'jquery-ui-rails'
 gem 'will_paginate'
+gem 'devise', '3.0.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

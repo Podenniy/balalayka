@@ -26,4 +26,15 @@ Balalayka::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+      address:           "smtp.gmail.com",
+      port:               587,
+      domain:            "domain.of.sender.net",
+      user_name:         "dima",
+      password:          "secret",
+      enable_starttls_auto: true
+  }
 end
