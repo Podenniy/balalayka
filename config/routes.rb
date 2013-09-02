@@ -1,4 +1,5 @@
 Balalayka::Application.routes.draw do
+  devise_for :users
   resources :payment_types
 
   resources :orders

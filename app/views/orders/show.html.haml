@@ -18,7 +18,10 @@
   %strong= model_class.human_attribute_name(:pay_type) + ':'
   %br
   = @order.pay_type
-
+%p
+  %strong= model_class.human_attribute_name(:ship_date) + ':'
+  %br
+  = @order.updated_at
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), orders_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_order_path(@order), :class => 'btn'

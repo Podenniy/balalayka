@@ -26,8 +26,9 @@ class OrdersController < InheritedResources::Base
   	
   end
 
-  def create
-    
+
+
+  def create   
     @order = Order.new(permitted_params)
     @order.add_line_items_from_cart(current_cart)
 
@@ -35,6 +36,7 @@ class OrdersController < InheritedResources::Base
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+
         OrderNotifier.received(@order).deliver
         format.html {redirect_to store_url, notice:
            'Спасибо за ваш заказ.'}
@@ -45,12 +47,23 @@ class OrdersController < InheritedResources::Base
         format.html { render action: "new" }
         format.json { render json:@order.errors,
              status: unprocessable_entity }
-
       end
     end
-
-  end
-
+ end
+ 
+ def update
+   
+   update! do | format |
+     if @order.update_attributes(permitted_params)
+      Notifier.order_shipped(@order).deliver unless @order.ship_date.nil?
+      format.html {redirect_to(@order, notice: 'Ваш заказ был изменен')}
+      format.xml {head :ok }
+     else
+       format.html{ render :action => "edit"}
+       format.xml { render :xml => @order.errors, :status => :unprocessable_entity }
+     end
+   end
+ end
   private
   def currcart
     @cart = current_cart
@@ -59,6 +72,6 @@ class OrdersController < InheritedResources::Base
      @order = Order.find(params[:id])
   end
   def permitted_params
-     params.require(:order).permit(:name, :address, :email, :pay_type )
+     params.require(:order).permit(:name, :address, :email, :pay_type, :ship_dates)
   end
 end
