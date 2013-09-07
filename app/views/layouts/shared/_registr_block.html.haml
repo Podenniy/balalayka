@@ -1,0 +1,25 @@
+- if user_signed_in?
+  .alert.alert-info.pull-right.sign_in_block
+    %span.label.label-info 
+      Вы зашли как 
+      %span.label.label-warning #{current_user.name.upcase}
+      Если это не вы
+    %i.icon-hand-right.icon-black
+    =link_to "Выходите", destroy_user_session_path, class: 'btn btn-inverse btn-small sign_out_bt',:method => :get
+- else
+  - unless current_page?(new_user_session_path) ||  current_page?(new_user_registration_path)
+    .alert.alert-warning.pull-right.registr_block
+      %span.label.label-warning
+        Зарегистрируйтесь или войдите в свой аккаунт
+      %i.icon-hand-right
+      .btn-group.sign_chois
+        %button.btn.dropdown-toggle{"data-toggle" => "dropdown"  }
+          Выбирите
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            =link_to "Зарегистрироваться",new_user_registration_path
+          %li
+            =link_to "Войти", new_user_session_path
+          %li
+            %a{:href => "#"} Еще и еще

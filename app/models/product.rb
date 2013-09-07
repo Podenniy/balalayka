@@ -1,4 +1,7 @@
 class Product < ActiveRecord::Base
+  belongs_to :brend
+  belongs_to :category
+  has_many :users
   has_many :line_items
   has_many :orders, through: :line_items
   before_destroy :ensure_not_referenced_by_any_line_item

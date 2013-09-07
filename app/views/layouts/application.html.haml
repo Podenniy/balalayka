@@ -33,34 +33,7 @@
                 %li= link_to "Link 1", "/path1"
                 %li= link_to "Link 2", "/path2"
                 %li= link_to "Link 3", "/path3"
-            - if user_signed_in?
-              .alert.alert-info.pull-right.sign_in_block
-                %span.label.label-info 
-                  Вы зашли как 
-                  %span.label.label-warning #{current_user.name.upcase}
-                  Если это не вы
-                %i.icon-hand-right.icon-black
-                =link_to "Выходите", destroy_user_session_path, class: 'btn btn-inverse btn-small sign_out_bt',:method => :delete
-            - else
-              - unless current_page?(new_user_session_path) ||  current_page?(new_user_registration_path)
-                .alert.alert-warning.pull-right.registr_block
-                  %span.label.label-warning
-                    Зарегистрируйтесь или войдите в свой аккаунт
-                  %i.icon-hand-right
-                  .btn-group.sign_chois
-                    %button.btn.dropdown-toggle{"data-toggle" => "dropdown"  }
-                      Выбирите
-                      %span.caret
-                    %ul.dropdown-menu
-                      %li
-                        =link_to "Зарегистрироваться",new_user_registration_path
-                      %li
-                        =link_to "Войти", new_user_session_path
-                      %li
-                        %a{:href => "#"} Еще и еще
-                      %li.divider
-                      %li
-                        %a{:href => "#"} Отделенный пункт
+            = render "layouts/shared/registr_block"
     .container-fluid.wrap
 
       .row-fluid
@@ -72,11 +45,10 @@
                   = hidden_div_if(@cart.line_items.empty?, id:'cart') do
                     = render @cart
               %h3 Sidebar
-              %ul.nav.nav-list
+              %ul.nav.nav-list.category_manu
                 %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
+                %li.devider-vertical
+                = render "layouts/shared/menu"
                 %li
                   %strong 
                   = @time
@@ -87,8 +59,8 @@
         
       %footer
         %p &copy; Company 2013
-    /
-      Javascripts
-      \==================================================
+    
+      //Javascripts
+      //\==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"

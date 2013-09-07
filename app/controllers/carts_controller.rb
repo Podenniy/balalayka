@@ -1,6 +1,7 @@
 class CartsController < InheritedResources::Base
  #before_action :set_cart , only: [:edit, :update, :destroy]
-
+  before_filter :authenticate_user!
+  skip_load_and_authorize_resource
   def show
   	begin
       @cart = current_cart

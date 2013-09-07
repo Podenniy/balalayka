@@ -1,7 +1,13 @@
 Balalayka::Application.routes.draw do
-  devise_for :users
-  resources :payment_types
+  resources :brends
 
+  resources :categories
+
+  resources :roles
+
+  devise_for :users,  :controllers => { :registrations => "users/registrations" }
+  resources :payment_types
+  resources :users
   resources :orders
 
   resources :line_items
@@ -13,6 +19,7 @@ Balalayka::Application.routes.draw do
 
   get "store/index"
   resources :products do
+    
     get :who_bought, on: :member
   end
 

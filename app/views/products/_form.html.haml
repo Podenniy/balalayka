@@ -3,6 +3,8 @@
   = f.input :description, rows: 6
   = f.input :image_url
   = f.input :price
+  = f.association :category
+  = f.association :brend
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), products_path, :class => 'btn'

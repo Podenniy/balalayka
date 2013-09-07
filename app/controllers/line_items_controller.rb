@@ -1,9 +1,9 @@
 class LineItemsController < InheritedResources::Base
+  before_filter :authenticate_user!
+  skip_load_and_authorize_resource
   before_action :set_line_item, only: [:show, :edit, :update,  :destroy,  :decrement]
   before_action :currcart , only: [:show, :edit, :update, :create, :destroy]
   
-  
-
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])

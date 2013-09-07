@@ -1,14 +1,18 @@
 class OrdersController < InheritedResources::Base
+  skip_load_and_authorize_resource 
+  before_filter :authenticate_user!
   before_action :currcart 
   before_action :set_order, only: [ :show, :edit, :update, :destroy]
-
+  
+  
   def index
     @orders = Order.paginate page: params[:page], order: 'created_at desc',
        per_page: 10
-
+   authorize! :read, @orders
     index! do | format |
       format.html #index.html.haml
       format.json { render json:@orders }
+
     end
   end
 
@@ -50,7 +54,9 @@ class OrdersController < InheritedResources::Base
       end
     end
  end
- 
+ def show
+   authorize! :read, @orders
+ end
  def update
    
    update! do | format |

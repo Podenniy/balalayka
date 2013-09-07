@@ -42,7 +42,10 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'jquery-ui-rails'
 gem 'will_paginate'
-gem 'devise', '3.0.0'
+gem 'devise', '3.0.2'
+gem "cancan"
+#gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

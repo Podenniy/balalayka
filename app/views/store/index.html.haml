@@ -6,7 +6,7 @@
   .hero-unit.span11.product_title.well.entry
     %h3 
       = product.title
-    = image_tag(product.image_url)
+    = link_to image_tag(product.image_url),product
     %p.discription
       = sanitize(product.description)
     .price_line

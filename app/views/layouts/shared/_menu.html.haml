@@ -1,0 +1,32 @@
+- @category_meny.each do | category|
+  - if category.children.empty? 
+    %li
+      =link_to category.name, category
+  - else 
+    %li
+      %a 
+        = category.name
+      %ul.nav.nav-list.child_category
+        - category.children.each do |chil|
+          - if chil.children.empty?
+            %li
+              %a
+                =link_to chil.name, chil
+          -else
+            %li
+              %a 
+                = chil.name
+              %ul.nav.nav-list
+                - chil.children.each do | chili|
+                  - if chili.children.empty?
+                    %li
+                      %a
+                        =link_to chili.name, chili
+                  -else
+                    %li
+                      %a
+                        = chili.name
+             
+
+
+  

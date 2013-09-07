@@ -1,0 +1,22 @@
+= simple_form_for(@user) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@user.errors.count, "error")
+        prohibited this user from being saved:
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  .form-inputs
+
+    = f.input :name, :required => true, :autofocus => true
+    = f.input :email, :required => true
+  - if @current_method == "new"
+    = f.input :password, :required => false
+    = f.input :password_confirmation, :required => true
+  - for role in Role.find(:all)
+    %div
+      = check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role)
+      = role.name
+  .form-actions
+    = f.button :submit, "Sign up"
