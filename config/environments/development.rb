@@ -7,7 +7,7 @@ Balalayka::Application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
-  config.eager_load = false
+  config.eager_load = true
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -27,14 +27,17 @@ Balalayka::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :sendmail
 
-  config.action_mailer.smtp_settings = {
-      address:           "smtp.gmail.com",
-      port:               587,
-      domain:            "domain.of.sender.net",
-      user_name:         "dima",
-      password:          "secret",
-      enable_starttls_auto: true
-  }
+  #config.action_mailer.smtp_settings = {
+  #    address:           "smtp.gmail.com",
+  #    port:               587,
+  #    domain:            "domain.of.sender.net",
+  #    user_name:         "dima",
+  #    password:          "secret",
+  #    enable_starttls_auto: true
+  #}
+
+
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

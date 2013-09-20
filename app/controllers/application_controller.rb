@@ -35,7 +35,6 @@ class ApplicationController < ActionController::Base
  
    def menu
      categories = Category.all.where(:parent_id => nil)
-     categories
    end
        
    

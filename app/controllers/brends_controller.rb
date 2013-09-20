@@ -4,11 +4,16 @@ class BrendsController < InheritedResources::Base
 
    before_action :cal
   before_action :currcart
+  def index
+    authorize! :read, @brend
+    super  
+  end
 
-
+  
+  
   def currcart
-  	  @cart = current_cart
-    end
+  	@cart = current_cart
+  end
   def permitted_params
    params.permit(:brend => [:title, :category_id, :discription, :image_url])
   end

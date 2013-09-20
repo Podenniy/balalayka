@@ -12,6 +12,7 @@ class Ability
         can :show, [Product]
         can [:show] , Order
         can [:read, :create, :update, :destroy], Cart
+       
       end
  
     

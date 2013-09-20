@@ -1,0 +1,41 @@
+ru:
+  helpers:
+    submit:
+      category:
+        create: 'Создать категорию'
+      product:
+        create: "Создать товар"
+        update: "Обновить продукт"
+      line_item:
+        destroy: "Удалить"
+
+  category: 
+    name: "Создание новой категории"
+    cancel: "Вернуться"
+    new: 'Создать новую категорию'
+    edit: 'Редактировать'
+    destroy: 'Удалить'
+  product:
+    title: "Товар"
+    model_name: "Модель"
+    description: "Описание"
+    image_url: "Изображение товара"
+    price: "Цена"
+    show: "показать"
+  store: 
+    price: "Цена :" 
+    add_to_cart: "Добавить в корзину"
+  order:
+    title: "Прайс заказов"
+    name: "Имя "
+    address: "Адрес"
+    pay_type: "Вид оплаты"
+    show: "посмотреть"
+    show_title: "Заказ"
+    ship_date: "Дата оформления"
+  activerecord:
+    models:
+      sesions:
+        name: "Имя"
+        password: "Пароль"
+      product:

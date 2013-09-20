@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130907163235) do
+ActiveRecord::Schema.define(version: 20130910125406) do
+
+  create_table "assets", force: true do |t|
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "assets", ["product_id"], name: "index_assets_on_product_id", using: :btree
 
   create_table "brends", force: true do |t|
     t.string   "title"

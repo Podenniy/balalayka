@@ -9,6 +9,6 @@ class StoreController < ApplicationController
   end
 
   def cal
-     @category_meny = Category.all.where(:parent_id => nil)
+    @category_meny = Category.all.where(:parent_id => nil)
   end
 end

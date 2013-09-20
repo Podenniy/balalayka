@@ -1,15 +1,15 @@
-%h1 Прайс заказов
+%h1=t("order.title")
 %table.table.table-striped
   %thead
     %tr
       %th
-        Имя
+        =t("order.name")
       %th
-        Адрес
+        =t("order.address")
       %th
         Email
       %th
-        Вид оплаты
+        =t("order.pay_type")
       %th
       %th
       %th
@@ -20,7 +20,7 @@
         %td= order.address
         %td= order.email
         %td= order.pay_type
-        %td= link_to 'Show', order
+        %td= link_to t('order.show'), order , class: "btn btn-mini btn-info "
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_order_path(order), :class => 'btn btn-mini'
         %td  

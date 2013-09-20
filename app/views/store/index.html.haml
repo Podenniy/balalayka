@@ -12,7 +12,8 @@
     .price_line
       %span.price
         %strong
-          Цена:
+          = t("store.price")
+          
         %span.waluta
           = number_to_currency(product.price, unit: "UA", format: "%n %u")
-      = button_to 'Добавить в корзину', line_items_path(product_id: product), remote: true ,  :class => "btn btn-primary "    
+      = button_to t("store.add_to_cart"), line_items_path(product_id: product), remote: true ,  :class => "btn btn-primary "    

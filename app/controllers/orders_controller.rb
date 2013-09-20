@@ -3,7 +3,7 @@ class OrdersController < InheritedResources::Base
   before_filter :authenticate_user!
   before_action :currcart 
   before_action :set_order, only: [ :show, :edit, :update, :destroy]
-  
+  before_action :cal
   
   def index
     @orders = Order.paginate page: params[:page], order: 'created_at desc',
@@ -79,5 +79,9 @@ class OrdersController < InheritedResources::Base
   end
   def permitted_params
      params.require(:order).permit(:name, :address, :email, :pay_type, :ship_dates)
+  end
+
+  def cal
+    @category_meny = Category.all.where(:parent_id => nil)
   end
 end

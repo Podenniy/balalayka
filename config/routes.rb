@@ -5,7 +5,7 @@ Balalayka::Application.routes.draw do
 
   resources :roles
 
-  devise_for :users,  :controllers => { :registrations => "users/registrations" }
+  devise_for :users, :controllers => { :sessions => 'users/sessions' } 
   resources :payment_types
   resources :users
   resources :orders

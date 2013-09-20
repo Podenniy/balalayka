@@ -1,24 +1,23 @@
 - model_class = Product
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human
-
+  %h1 
+    =@product.title
+   
 %p
-  %strong= model_class.human_attribute_name(:title) + ':'
-  %br
-  = @product.title
-%p
-  %strong= model_class.human_attribute_name(:description) + ':'
+  %strong= model_class.human_attribute_name t("product.description") + ':'
   %br
   = @product.description
 %p
-  %strong= model_class.human_attribute_name(:image_url) + ':'
+  %strong= model_class.human_attribute_name t("product.image_url") + ':'
   %br
   = image_tag( @product.image_url)
 %p
-  %strong= model_class.human_attribute_name(:price) + ':'
+  %strong= model_class.human_attribute_name t("product.price") + ':'
   %br
-  = @product.price
-
+  =  number_to_currency(@product.price, unit: "UA", format: "%n %u")
+%p
+  -@product.assets.each do | asset |
+    = image_tag(asset.image.url(:medium))
 .form-actions
   - if can? :update, @product
     = link_to t('.back', :default => t("helpers.links.back")), products_path, :class => 'btn'
@@ -26,4 +25,4 @@
     = link_to t('.destroy', :default => t("helpers.links.destroy")), product_path(@product), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
   -else
     = button_to 'Добавить в корзину', line_items_path(product_id: @product.id), remote: true ,  :class => "btn btn-primary " 
-    = button_to 'Вернуться', store_path, method: :get , :class => 'btn btn-inverse reset'   
+    = button_to 'Вернуться',@product.brend, method: :get , :class => 'btn btn-inverse reset'   

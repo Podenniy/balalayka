@@ -1,13 +1,13 @@
 - model_class = Order
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human
+  %h1=t ('order.show_title'), :default => model_class.model_name.human
 
 %p
-  %strong= model_class.human_attribute_name(:name) + ':'
+  %strong= model_class.human_attribute_name t("order.name") + ':'
   %br
   = @order.name
 %p
-  %strong= model_class.human_attribute_name(:address) + ':'
+  %strong= model_class.human_attribute_name t("order.address") + ':'
   %br
   = @order.address
 %p
@@ -15,11 +15,11 @@
   %br
   = @order.email
 %p
-  %strong= model_class.human_attribute_name(:pay_type) + ':'
+  %strong= model_class.human_attribute_name t("order.pay_type") + ':'
   %br
   = @order.pay_type
 %p
-  %strong= model_class.human_attribute_name(:ship_date) + ':'
+  %strong= model_class.human_attribute_name t("order.ship_date") + ':'
   %br
   = @order.updated_at
 .form-actions

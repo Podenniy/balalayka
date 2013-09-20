@@ -1,4 +1,5 @@
-class UsersController < ApplicationController
+class UsersController < Devise::SessionsController
+  before_action :cal
   #load_and_authorize_resource
   # GET /users
   # GET /users.xml
@@ -88,5 +89,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:email, :name, :password, :password_confirmation, :remember_me, :role_ids)
     end
   
+  def cal
+     @category_meny = Category.all.where(:parent_id => nil)
+  end
 end
 
